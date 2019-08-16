@@ -28,7 +28,7 @@ def send_email(message, node, from_addr, to_addr, password):
 def run_iwconfig(interface):
     """ Gathers interface stats using iwconfig command """
 
-    return subprocess.run(['iwconfig', '{0}'.find(interface)], capture_output=True, text=True).stdout
+    return subprocess.run(['iwconfig', '{0}'.format(interface)], capture_output=True, text=True).stdout
 
 
 def get_rx_signal(interface):
