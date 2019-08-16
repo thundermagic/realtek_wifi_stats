@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
         # Parse the output
         freq = iface_stats[iface_stats.find('Frequency'): iface_stats.find('GHz', iface_stats.find('Frequency'))].split(':')[-1]
-        freq = 'wifi_frequency[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), freq.strip())
+        freq = 'wifi_frequency[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), int(freq.strip()) * 1000000000)
         print(freq.replace('[', '{').replace(']', '}'))
 
         link_quality = iface_stats[iface_stats.find('Link Quality'): iface_stats.find('Signal', iface_stats.find('Link Quality'))].split('=')[-1]
