@@ -52,6 +52,10 @@ if __name__ == '__main__':
         freq = 'wifi_frequency[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), int(float(freq.strip()) * 1000000000))
         print(freq.replace('[', '{').replace(']', '}'))
 
+        bit_rate = iface_stats[iface_stats.find('Bit Rate'): iface_stats.find('Mb/s', iface_stats.find('Bit Rate'))].split(':')[-1]
+        bit_rate = 'wifi_bit_rate[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), bit_rate.strip())
+        print(bit_rate.replace('[', '{').replace(']', '}'))
+
         link_quality = iface_stats[iface_stats.find('Link Quality'): iface_stats.find('Signal', iface_stats.find('Link Quality'))].split('=')[-1]
         link_quality = 'wifi_link_quality[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), link_quality.split('/')[0])
         print(link_quality.replace('[', '{').replace(']', '}'))
