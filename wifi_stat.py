@@ -53,15 +53,15 @@ if __name__ == '__main__':
         print(freq.replace('[', '{').replace(']', '}'))
 
         link_quality = iface_stats[iface_stats.find('Link Quality'): iface_stats.find('Signal', iface_stats.find('Link Quality'))].split('=')[-1]
-        link_quality = 'wifi_link_quality[node="{0}",device="{1}"}] {2}'.format(sys.argv[2], sys.argv[1], link_quality)
+        link_quality = 'wifi_link_quality[node="{0}",device="{1}"] {2}'.format(sys.argv[2], sys.argv[1], link_quality)
         print(link_quality.replace('[', '{').replace(']', '}'))
 
         signal_level = iface_stats[iface_stats.find('Signal level'): iface_stats.find('Noise', iface_stats.find('Signal level'))].split('=')[-1]
-        signal_level = 'wifi_signal_level[node="{0}",device="{1}"}] {2}'.format(sys.argv[2], sys.argv[1], signal_level)
+        signal_level = 'wifi_signal_level[node="{0}",device="{1}"] {2}'.format(sys.argv[2], sys.argv[1], signal_level)
         print(signal_level.replace('[', '{').replace(']', '}'))
 
         noise_level = iface_stats[iface_stats.find('Noise level'): iface_stats.find('\n', iface_stats.find('Noise level'))].split('=')[-1]
-        noise_level = 'wifi_noise_level[node="{0}",device="{1}"}] {2}'.format(sys.argv[2], sys.argv[1], noise_level)
+        noise_level = 'wifi_noise_level[node="{0}",device="{1}"] {2}'.format(sys.argv[2], sys.argv[1], noise_level)
         print(noise_level.replace('[', '{').replace(']', '}'))
 
         rssi = rx_signal_stats[rx_signal_stats.find('rssi'): rx_signal_stats.find('\n', rx_signal_stats.find('rssi'))].split(':')[-1]
