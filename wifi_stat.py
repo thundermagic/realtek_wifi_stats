@@ -34,7 +34,7 @@ def run_iwconfig(interface):
 def get_rx_signal(interface):
     """ Gets rssi from rx_signal file """
 
-    file_path = os.path.join('proc', 'net', 'rtl88x2bu', interface, 'rx_signal')
+    file_path = '/' + os.path.join('proc', 'net', 'rtl88x2bu', interface, 'rx_signal')
     return subprocess.run(['cat', file_path], capture_output=True, text=True).stdout
 
 if __name__ == '__main__':
