@@ -1,0 +1,13 @@
+# Wifi stats service
+[Unit]
+Description=Realtek Wifi stats prometheus exporter
+After=network.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/local/bin/run_wifi_stats.sh wlan1 gateway
+
+[Install]
+WantedBy=multi-user.target
