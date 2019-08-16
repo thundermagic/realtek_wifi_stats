@@ -49,23 +49,23 @@ if __name__ == '__main__':
 
         # Parse the output
         freq = iface_stats[iface_stats.find('Frequency'): iface_stats.find('GHz', iface_stats.find('Frequency'))].split(':')[-1]
-        freq = 'wifi_frequency[node="{0}",device="{1}"] {2}'.format(sys.argv[2], sys.argv[1], freq)
+        freq = 'wifi_frequency[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), freq.strip())
         print(freq.replace('[', '{').replace(']', '}'))
 
         link_quality = iface_stats[iface_stats.find('Link Quality'): iface_stats.find('Signal', iface_stats.find('Link Quality'))].split('=')[-1]
-        link_quality = 'wifi_link_quality[node="{0}",device="{1}"] {2}'.format(sys.argv[2], sys.argv[1], link_quality.split('/')[0])
+        link_quality = 'wifi_link_quality[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), link_quality.split('/')[0])
         print(link_quality.replace('[', '{').replace(']', '}'))
 
         signal_level = iface_stats[iface_stats.find('Signal level'): iface_stats.find('Noise', iface_stats.find('Signal level'))].split('=')[-1]
-        signal_level = 'wifi_signal_level[node="{0}",device="{1}"] {2}'.format(sys.argv[2], sys.argv[1], signal_level.split('/')[0])
+        signal_level = 'wifi_signal_level[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), signal_level.split('/')[0])
         print(signal_level.replace('[', '{').replace(']', '}'))
 
         noise_level = iface_stats[iface_stats.find('Noise level'): iface_stats.find('\n', iface_stats.find('Noise level'))].split('=')[-1]
-        noise_level = 'wifi_noise_level[node="{0}",device="{1}"] {2}'.format(sys.argv[2], sys.argv[1], noise_level.split('/')[0])
+        noise_level = 'wifi_noise_level[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), noise_level.split('/')[0])
         print(noise_level.replace('[', '{').replace(']', '}'))
 
         rssi = rx_signal_stats[rx_signal_stats.find('rssi'): rx_signal_stats.find('\n', rx_signal_stats.find('rssi'))].split(':')[-1]
-        rssi = 'wifi_rssi_level[node="{0}",device="{1}"] {2}'.format(sys.argv[2], sys.argv[1], rssi)
+        rssi = 'wifi_rssi_level[node="{0}",device="{1}"] {2}'.format(sys.argv[2].strip(), sys.argv[1].strip(), rssi)
         print(rssi.replace('[', '{').replace(']', '}'))
     except Exception as err:
         print('Unexpected error')
